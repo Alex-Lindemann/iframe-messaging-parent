@@ -34,8 +34,8 @@ function App() {
         <br />
         <ReturnedData />
         <br />
-        {showIframe && <iframe height='300' width='1000' src={`${getNavigateUrlBase()}/iframe`} title="description"></iframe>}
       </header>
+      {showIframe && <iframe height='100%' width='100%' style={{ border: 0, position: 'absolute', top: 0, left: 0, zIndex: 5 }} src={`${getNavigateUrlBase()}/iframe`} title="description"></iframe>}
     </div>
   );
 }
