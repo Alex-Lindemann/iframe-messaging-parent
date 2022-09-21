@@ -24,13 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <Routes>
-          <Route path='/showData' element={<>
-            <ReturnedData />
-          </>} />
-        </Routes> */}
         <Button href={getNavigateUrlBase()} variant="outlined">Go to App Two</Button>
-        {/* <Button component={Link} to={getNavigateUrlBase()} variant="outlined">Go to App Two</Button> */}
         <br />
         <Button variant="outlined" onClick={() => {
           setShowIframe(true)
