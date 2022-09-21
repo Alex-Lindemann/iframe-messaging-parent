@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import ReturnedData from './components/ReturnedData';
 import './App.css';
+import SimpleBottomNavigation from './components/Navigation';
 
 function getNavigateUrlBase() {
   if (window.location.origin === "http://localhost:3000") {
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <SimpleBottomNavigation />
         <Button href={getNavigateUrlBase()} variant="outlined">Go to App Two</Button>
         <br />
         <Button variant="outlined" onClick={() => {
