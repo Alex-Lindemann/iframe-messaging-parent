@@ -1,22 +1,44 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { Button } from '@mui/material';
+import ReturnedData from './components/ReturnedData';
 import './App.css';
 
+function getNavigateUrlBase() {
+  if (window.location.origin === "http://localhost:3000") {
+    return 'http://localhost:3001';
+  }
+  return 'https://someurl';
+}
+
 function App() {
+  const [showIframe, setShowIframe] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("message", (event) => {
+      if (event.data.type === 'message-to-parent') {
+        setShowIframe(false);
+      }
+    }, false);
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <Routes>
+          <Route path='/showData' element={<>
+            <ReturnedData />
+          </>} />
+        </Routes> */}
+        <Button href={getNavigateUrlBase()} variant="outlined">Go to App Two</Button>
+        {/* <Button component={Link} to={getNavigateUrlBase()} variant="outlined">Go to App Two</Button> */}
+        <br />
+        <Button variant="outlined" onClick={() => {
+          setShowIframe(true)
+        }}>iframe App Two</Button>
+        <br />
+        <ReturnedData />
+        <br />
+        {showIframe && <iframe height='300' width='1000' src={`${getNavigateUrlBase()}/iframe`} title="description"></iframe>}
       </header>
     </div>
   );
