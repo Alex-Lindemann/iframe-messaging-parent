@@ -7,7 +7,7 @@ function getNavigateUrlBase() {
   if (window.location.origin === "http://localhost:3000") {
     return 'http://localhost:3001';
   }
-  return 'https://someurl';
+  return 'https://iframe-messaging-child.herokuapp.com';
 }
 
 function App() {
